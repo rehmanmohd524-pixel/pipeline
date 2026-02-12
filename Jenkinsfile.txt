@@ -25,7 +25,7 @@ pipeline {
         }
         stage('install') { 
             steps {
-                sh "mvn install -f My-drone"
+                sh "mvn clean install -f My-drone/pom.xml"
             }
         }
         stage('deploy') { 
@@ -34,4 +34,5 @@ pipeline {
             }
         }
     }
+
 }
