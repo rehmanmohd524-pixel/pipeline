@@ -16,8 +16,6 @@
     </properties>
 
     <dependencies>
-
-        <!-- Servlet API for Tomcat 10 -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -25,19 +23,23 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JUnit for testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
         <finalName>simple-maven-app</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
-
