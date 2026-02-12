@@ -1,38 +1,30 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('clone repo') { 
+        stage('--clean--') {
             steps {
-                sh "rm -rf My-drone"
-                sh "git clone https://github.com/rehmanmohd524-pixel/pipeline.git"
-                sh "mvn clean -f My-drone"
+                sh 'mvn clean'
             }
         }
-        stage('Compile') { 
+        stage('--compile--') {
             steps {
-                sh "mvn compile -f My-drone"
+                sh 'mvn compile'
             }
         }
-        stage('Test') { 
+        stage('--test--') {
             steps {
-                sh "mvn test -f My-drone"
+                sh 'mvn test'
             }
         }
-        stage('package') { 
+        stage('--package--') {
             steps {
-                sh "mvn package -f My-drone"
+                sh 'mvn package'
             }
         }
-        stage('install') { 
+        stage('--install--') {
             steps {
-                sh "mvn clean install -f My-drone/pom.xml"
-            }
-        }
-        stage('deploy') { 
-            steps {
-                sh "cp /root/.m2/repository/DevOps/TestProject/1.0/TestProject-1.0.war /var/lib/tomcat10/webapps"
+                sh 'mvn install'
             }
         }
     }
-
 }
